@@ -1,0 +1,41 @@
+<div class="gamePanel">
+  <div class="gamePanel-left">
+    <div class="gamePanel-left-screen">
+      <div class="gamePanel-left-screen-left">
+        <img [src]="currentSelectLink" alt="">
+      </div>
+      <div class="gamePanel-left-screen-right">
+        <img [src]="currentRandomLink" alt="">
+      </div>
+    </div>
+    <div class="gamePanel-left-selection">
+      <div class="options" *ngFor="let item of selections | keyvalue" (click)="startGame(item)">
+        <img src="{{item.value}}" alt="{{item}}">
+      </div>
+    </div>
+  </div>
+  <div class="gamePanel-right">
+    <div class="gamePanel-right-historys">
+      <div class="history" *ngFor="let item of history$ | async">
+        {{item.userSelect}} --{{item.randomSelect}}-- {{item.result}}
+      </div>
+    </div>
+    <div class="resultInfo">
+      <div>
+        win:{{winrate | number:'1.2-2'}}
+      </div>
+      <div>
+        lose:{{loserate | number:'1.2-2'}}
+      </div>
+      <div>
+        draw:{{drawrate | number:'1.2-2'}}
+      </div>
+      <div>
+        total:{{totalplayed | number:'1.2-2'}}
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
